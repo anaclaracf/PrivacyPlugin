@@ -1,1 +1,1 @@
-# PrivacyPlugin
+# Privacy Plugin
