@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "PrivacyPlugin",
+  "version": "1.0",
+  "permissions": ["cookies", "<all_urls>", "tabs", "storage"],
+  "browser_action": {
+    "browser_style": true,
+    "default_popup": "plugin.html"
+  },
+
+  "description": "Extensão que detecta riscos do site, baseando-se em informações como Local Storage, número de Cookies e afins",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["main.js"]
+    }
+  ]
+}
