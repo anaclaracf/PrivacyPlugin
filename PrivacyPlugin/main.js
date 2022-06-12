@@ -1,32 +1,30 @@
 const getAllDomains = () => {
-  const infoType = "link, img, video, audio,script, iframe, source, embed"; 
-  
+  const infoType = "link, img, video, audio,script, iframe, source, embed";
+
   return {
     domainsQuantity: Array.prototype.map.call(
-      document.querySelectorAll(
-        infoType
-      ),
-      (HTMLtag) => { 
-        return HTMLtag.src || HTMLtag.href; 
+      document.querySelectorAll(infoType),
+      (HTMLtag) => {
+        return HTMLtag.src || HTMLtag.href;
       }
-    ).length
-  }
-}
+    ).length,
+  };
+};
 
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   var requestType = request.method;
 
-  if(requestType == "getDomains") {
-    sendResponse({ 
-      data: getAllDomains() 
+  if (requestType == "getDomains") {
+    sendResponse({
+      data: getAllDomains(),
     });
-  } else if(requestType == "getLocalStorage") {
-    sendResponse({ 
-      data: Object.entries(localStorage) 
+  } else if (requestType == "getLocalStorage") {
+    sendResponse({
+      data: Object.entries(localStorage),
     });
   } else {
-    sendResponse({ 
-      data: null 
+    sendResponse({
+      data: null,
     });
   }
 });
